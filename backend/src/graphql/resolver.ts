@@ -7,7 +7,7 @@ async function getMovies() {
 
 /* A resolver is used to say what will be RETURNED for each schema element */
 const resolver = {
-  movies: getMovies,
+  movies: getMovies
 };
 
 export default resolver;

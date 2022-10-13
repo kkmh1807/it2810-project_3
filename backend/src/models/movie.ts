@@ -22,62 +22,62 @@ export interface Movie {
 export const movieSchema = new Schema<Movie>({
   Poster_Link: {
     type: String,
-    required: true,
+    required: true
   },
   Series_Title: {
     type: String,
-    required: true,
+    required: true
   },
   Released_Year: Number,
   Certificate: {
     type: String,
-    required: true,
+    required: true
   },
   Runtime: {
     type: String,
-    required: true,
+    required: true
   },
   Genre: {
     type: String,
-    required: true,
+    required: true
   },
   IMDB_Rating: {
     type: Number,
-    required: true,
+    required: true
   },
   Overview: {
     type: String,
-    required: true,
+    required: true
   },
   Meta_score: Number,
   Director: {
     type: String,
-    required: true,
+    required: true
   },
   Star1: {
     type: String,
-    required: true,
+    required: true
   },
   Star2: {
     type: String,
-    required: true,
+    required: true
   },
   Star3: {
     type: String,
-    required: true,
+    required: true
   },
   Star4: {
     type: String,
-    required: true,
+    required: true
   },
   No_of_Votes: {
     type: Number,
-    required: true,
+    required: true
   },
   Gross: {
     type: Number,
-    required: true,
-  },
+    required: true
+  }
 });
 
 export default model<Movie>('Movie', movieSchema);
