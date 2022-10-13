@@ -43,7 +43,7 @@ export const movieSchema = new Schema<Movie>({
   },
   IMDB_Rating: {
     type: Number,
-    requiredPaths: true,
+    required: true,
   },
   Overview: {
     type: String,
