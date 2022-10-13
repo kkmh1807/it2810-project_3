@@ -1,22 +1,22 @@
-import mongoose, { Schema, ObjectId } from "mongoose";
+import { model, Schema } from 'mongoose';
 
-interface Movie {
-  Poster_Link: String;
-  Series_Title: String;
-  Released_Year: Number;
-  Certificate: String;
-  Runtime: String;
-  Genre: String;
-  IMDB_Rating: Number;
-  Overview: String;
-  Meta_score: Number;
-  Director: String;
-  Star1: String;
-  Star2: String;
-  Star3: String;
-  Star4: String;
-  No_of_Votes: Number;
-  Gross: Number;
+export interface Movie {
+  Poster_Link: string;
+  Series_Title: string;
+  Released_Year?: number;
+  Certificate: string;
+  Runtime: string;
+  Genre: string;
+  IMDB_Rating: number;
+  Overview: string;
+  Meta_score?: number;
+  Director: string;
+  Star1: string;
+  Star2: string;
+  Star3: string;
+  Star4: string;
+  No_of_Votes: number;
+  Gross: number;
 }
 
 export const movieSchema = new Schema<Movie>({
@@ -28,10 +28,7 @@ export const movieSchema = new Schema<Movie>({
     type: String,
     required: true,
   },
-  Released_Year: {
-    type: Date,
-    required: true,
-  },
+  Released_Year: Number,
   Certificate: {
     type: String,
     required: true,
@@ -44,14 +41,15 @@ export const movieSchema = new Schema<Movie>({
     type: String,
     required: true,
   },
-  IMDB_Rating: Number,
+  IMDB_Rating: {
+    type: Number,
+    requiredPaths: true,
+  },
   Overview: {
     type: String,
     required: true,
   },
-  Meta_score: {
-    type: Number,
-  },
+  Meta_score: Number,
   Director: {
     type: String,
     required: true,
@@ -82,4 +80,4 @@ export const movieSchema = new Schema<Movie>({
   },
 });
 
-export default mongoose.model<Movie>("Movie", movieSchema);
+export default model<Movie>('Movie', movieSchema);
