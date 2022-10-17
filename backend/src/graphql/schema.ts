@@ -24,6 +24,9 @@ const schema = buildSchema(`
 
   type Query {
     movies:[Movie!]
+    getMoviesByTitle(title: String): [Movie]
+    getMoviesByActors(Star1:String, Star2:String, Star3: String, Star4: String): [Movie]
+    getMoviesByGenre(genre: String): [Movie]
   }
 
   schema {
