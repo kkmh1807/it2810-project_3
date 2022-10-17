@@ -13,19 +13,21 @@ async function searchMoviesTitle(args: { title: string }) {
 }
 
 // Get movies by actors
-async function searchMoviesByActors(args: { Star1: string; Star2: string; Star3: string; Star4: string }) {
+async function searchMoviesByActors(args: { actor: string }) {
   const movies = await movieModel.find({
-    Star1: { $regex: new RegExp(args.Star1, 'i') },
-    Star2: { $regex: new RegExp(args.Star2, 'i') },
-    Star3: { $regex: new RegExp(args.Star3, 'i') },
-    Star4: { $regex: new RegExp(args.Star4, 'i') }
+    $or: [
+      { Star1: { $regex: new RegExp(args.actor, 'i') } },
+      { Star2: { $regex: new RegExp(args.actor, 'i') } },
+      { Star3: { $regex: new RegExp(args.actor, 'i') } },
+      { Star4: { $regex: new RegExp(args.actor, 'i') } }
+    ]
   });
   return movies;
 }
 
 // Get movies by genre
-async function searchMoviesByGenres(args: { genres: string }) {
-  const movies = await movieModel.find({ Genres: { $reges: new RegExp(args.genres) } });
+async function searchMoviesByGenres(args: { genre: string }) {
+  const movies = await movieModel.find({ Genre: args.genre });
   return movies;
 }
 /* A resolver is used to say what will be RETURNED for each schema element */
