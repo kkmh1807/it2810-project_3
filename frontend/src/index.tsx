@@ -8,7 +8,9 @@ import { RecoilRoot } from 'recoil';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
+    {/* Wrapper for recoil state controller */}
     <RecoilRoot>
+      {/* Fallback while async selectors are loading */}
       <Suspense fallback={<div>Loading...</div>}>
         {/* TODO: remove when adding home */}
         <App />
