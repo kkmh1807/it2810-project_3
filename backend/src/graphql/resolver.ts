@@ -93,13 +93,20 @@ async function toggleWatched(args: { id: string }) {
   // https://stackoverflow.com/questions/67361357/how-do-i-update-a-boolean-field-to-its-opposite-in-mongoose
   return await movieModel.findByIdAndUpdate(args.id, [{ $set: { Watched: { $eq: [false, '$Watched'] } } }]);
 }
+async function getGenres() {
+  const genres = await movieModel.find().distinct('Genre');
+
+  return genres;
+}
+
 /* A resolver is used to say what will be RETURNED for each schema element */
 const resolver = {
   movies: getMovies,
   getMoviesByTitle: searchMoviesTitle,
   getMoviesByActors: searchMoviesByActors,
   getMoviesByGenre: searchMoviesByGenres,
-  toggleWatched: toggleWatched
+  toggleWatched: toggleWatched,
+  genres: getGenres
 };
 
 export default resolver;
