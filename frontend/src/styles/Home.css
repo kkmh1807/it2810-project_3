@@ -1,0 +1,11 @@
+.home-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-content {
+  width: 90%;
+  margin: 0 auto;
+}
