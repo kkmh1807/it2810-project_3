@@ -22,9 +22,12 @@ const Home = () => {
       </header>
       <main className="home-content">
         {movies?.data.map((movie) => (
-          <div key={movie._id}>
-            <div>{movie.Series_Title}</div>
-            <img src={movie.Poster_Link} onError={(e) => (e.currentTarget.src = 'assets/imdb_logo.svg')} />
+          <div className="movie-card" key={movie._id}>
+            <img id="poster" src={movie.Poster_Link} onError={(e) => (e.currentTarget.src = 'assets/imdb_logo.svg')} />
+            <div id="title">{movie.Series_Title}</div>
+            <div id="genre">{movie.Genre}</div>
+            <div id="star">{movie.Star1}</div>
+            <div id="rating">{movie.IMDB_Rating}</div>
           </div>
         ))}
       </main>
