@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { queryState } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
@@ -8,10 +8,25 @@ import '../styles/SearchBar.css';
 const genres = ['Horror', 'Comedy'];
 
 const SearchBar = () => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useRecoilState(queryState);
-
   const [searchMode, setSearchMode] = useState(query.mode);
   const [searchText, setSearchText] = useState(query.text);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key !== 'Enter') return;
+
+      buttonRef.current?.focus();
+      setQuery({ mode: searchMode, text: searchText });
+    };
+
+    window.addEventListener('keydown', handler);
+
+    return () => {
+      window.removeEventListener('keydown', handler);
+    };
+  }, []);
 
   return (
     <section role="search" className="search-bar">
@@ -36,7 +51,7 @@ const SearchBar = () => {
       ) : (
         <input className="search-field" placeholder="Search..." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
       )}
-      <button className="search-button" onClick={() => setQuery({ mode: searchMode, text: searchText })}>
+      <button ref={buttonRef} className="search-button" onClick={() => setQuery({ mode: searchMode, text: searchText })}>
         <img src="assets/search-icon.svg" alt="Search" />
       </button>
     </section>

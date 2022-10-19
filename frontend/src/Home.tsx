@@ -2,13 +2,13 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
-import { getAllMovies } from './recoil/selectors';
+import { searchMovies } from './recoil/selectors';
 import './styles/Home.css';
 // TODO: Logo and logo-styling to own component?
 import './styles/HomeLogo.css';
 
 const Home = () => {
-  const movies = useRecoilValue(getAllMovies);
+  const movies = useRecoilValue(searchMovies);
 
   return (
     <>
@@ -21,14 +21,14 @@ const Home = () => {
         <SearchBar />
       </header>
       <main className="home-content">
-        {movies.data.slice(0, 4).map((movie) => (
-          <div key={movie._id} style={{ width: 'max-content' }}>
+        {movies?.data.map((movie) => (
+          <div key={movie._id}>
             <div>{movie.Series_Title}</div>
             <img src={movie.Poster_Link} onError={(e) => (e.currentTarget.src = 'assets/imdb_logo.svg')} />
           </div>
         ))}
       </main>
-      <Pagination totalPages={movies.pageInfo.totalPages} />
+      <Pagination totalPages={movies?.pageInfo.totalPages || 0} />
     </>
   );
 };
