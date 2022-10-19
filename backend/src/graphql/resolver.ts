@@ -87,12 +87,23 @@ async function searchMoviesByGenres(args: { genre: string } & PaginationParams) 
     }
   };
 }
+
+// Set status of a movie to watched
+async function setWatched(args: { id: string }) {
+  const filter = { _id: args.id };
+  const update = { Watched: true };
+  let movie = await movieModel.findOneAndUpdate(filter, update);
+  movie = await movieModel.findOne(filter);
+
+  return await movie?.save();
+}
 /* A resolver is used to say what will be RETURNED for each schema element */
 const resolver = {
   movies: getMovies,
   getMoviesByTitle: searchMoviesTitle,
   getMoviesByActors: searchMoviesByActors,
-  getMoviesByGenre: searchMoviesByGenres
+  getMoviesByGenre: searchMoviesByGenres,
+  setWatched: setWatched
 };
 
 export default resolver;

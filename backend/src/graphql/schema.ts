@@ -26,6 +26,7 @@ const schema = buildSchema(`
     No_of_Votes: Int!
     Gross: Int!
     _id: ID!
+    Watched: Boolean
   }
 
   type Query {
@@ -37,6 +38,7 @@ const schema = buildSchema(`
 
   schema {
     query: Query
+    mutation: Mutation
   }
 
   type PageInfo {
@@ -48,6 +50,10 @@ const schema = buildSchema(`
   type MovieResponse {
     data: [Movie]!
     pageInfo: PageInfo!
+  }
+
+  type Mutation {
+    setWatched(id: String ): Movie
   }
 `);
 
