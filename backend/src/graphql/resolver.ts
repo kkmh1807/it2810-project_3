@@ -99,6 +99,15 @@ async function getGenres() {
   return genres;
 }
 
+// Set status of a movie to watched
+async function setWatched(args: { id: string }) {
+  const filter = { _id: args.id };
+  const update = { Watched: true };
+  let movie = await movieModel.findOneAndUpdate(filter, update);
+  movie = await movieModel.findOne(filter);
+
+  return await movie?.save();
+}
 /* A resolver is used to say what will be RETURNED for each schema element */
 const resolver = {
   movies: getMovies,
