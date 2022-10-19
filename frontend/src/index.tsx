@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
+import Home from './Home';
+import './styles/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -13,7 +13,7 @@ root.render(
       {/* Fallback while async selectors are loading */}
       <Suspense fallback={<div>Loading...</div>}>
         {/* TODO: remove when adding home */}
-        <App />
+        <Home />
       </Suspense>
     </RecoilRoot>
   </React.StrictMode>
