@@ -23,10 +23,10 @@ const schema = buildSchema(`
   }
 
   type Query {
-    movies(limitt:Int, skipp:Int): [Movie!]
-    getMoviesByTitle(title: String): [Movie]
-    getMoviesByActors(actor: String): [Movie]
-    getMoviesByGenre(genre: String): [Movie]
+    movies(limit:Int, skip:Int): [Movie!]
+    getMoviesByTitle(title: String, limit:Int, skip:Int): [Movie]
+    getMoviesByActors(actor: String, limit:Int, skip:Int): [Movie]
+    getMoviesByGenre(genre: String, limit:Int, skip:Int): [Movie]
   }
 
   schema {

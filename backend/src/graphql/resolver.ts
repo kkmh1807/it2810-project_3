@@ -6,23 +6,23 @@ import movieModel from '../models/movie';
 let limit: number = 10;
 let skip: number = 0;
 
-async function getMovies() {
-  const movies = await movieModel.find().limit(limit).skip(skip);
+async function getMovies(args: { limit: number; skip: number }) {
+  const movies = await movieModel.find().limit(args.limit).skip(args.skip);
   return movies;
 }
 
 // Get movies by title
-async function searchMoviesTitle(args: { title: string }) {
+async function searchMoviesTitle(args: { title: string; limit: number; skip: number }) {
   const movies = await movieModel
     .find({ Series_Title: { $regex: new RegExp(args.title, 'i') } })
-    .limit(limit)
-    .skip(skip);
+    .limit(args.limit)
+    .skip(args.skip);
 
   return movies;
 }
 
 // Get movies by actors
-async function searchMoviesByActors(args: { actor: string }) {
+async function searchMoviesByActors(args: { actor: string; limit: number; skip: number }) {
   const movies = await movieModel
     .find({
       $or: [
@@ -32,14 +32,14 @@ async function searchMoviesByActors(args: { actor: string }) {
         { Star4: { $regex: new RegExp(args.actor, 'i') } }
       ]
     })
-    .limit(limit)
-    .skip(skip);
+    .limit(args.limit)
+    .skip(args.skip);
   return movies;
 }
 
 // Get movies by genre
-async function searchMoviesByGenres(args: { genre: string }) {
-  const movies = await movieModel.find({ Genre: args.genre }).limit(limit).skip(skip);
+async function searchMoviesByGenres(args: { genre: string; limit: number; skip: number }) {
+  const movies = await movieModel.find({ Genre: args.genre }).limit(args.limit).skip(args.skip);
   return movies;
 }
 /* A resolver is used to say what will be RETURNED for each schema element */
