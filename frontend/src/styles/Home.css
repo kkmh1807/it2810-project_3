@@ -6,6 +6,38 @@
 }
 
 .home-content {
-  width: 90%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
+  color: #000000;
+}
+
+.movie-card {
+  background-color: #fcf7f7;
+  flex-basis: 90%;
+  display: grid;
+  grid-template-areas:
+    'a b b b'
+    'a c d e';
+  margin-bottom: 2%;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 0.3fr 1.5fr 1.5fr 0.5fr;
+  align-items: center;
+}
+#poster {
+  grid-area: a;
+}
+#title {
+  grid-area: b;
+}
+#genre {
+  grid-area: c;
+}
+#star {
+  grid-area: d;
+}
+#rating {
+  grid-area: e;
 }
