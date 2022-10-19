@@ -25,9 +25,16 @@ export const searchMovies = selector({
 async function getMoviesByTitle(title: string, page: number) {
   const searchQuery = `{
     getMoviesByTitle (title: "${title}", currentPage: ${page}) {
-      _id
-      Series_Title
-      Poster_Link
+      data {
+        _id
+        Series_Title
+        Poster_Link
+      }
+      pageInfo {
+        currentPage
+        totalPages
+        pageSize
+      }
     }
   }`;
 
@@ -37,10 +44,17 @@ async function getMoviesByTitle(title: string, page: number) {
 
 async function getMoviesByActor(actor: string, page: number) {
   const searchQuery = `{
-    getMoviesByActors (actor: "${actor}, currentPage: ${page}") {
-      _id
-      Series_Title
-      Poster_Link
+    getMoviesByActors (actor: "${actor}", currentPage: ${page}) {
+      data {
+        _id
+        Series_Title
+        Poster_Link
+      }
+      pageInfo {
+        currentPage
+        totalPages
+        pageSize
+      }
     }
   }`;
 
@@ -50,10 +64,17 @@ async function getMoviesByActor(actor: string, page: number) {
 
 async function getMoviesByGenre(genre: string, page: number) {
   const searchQuery = `{
-    getMoviesByGenre (genre: "${genre}, currentPage: ${page}") {
-      _id
-      Series_Title
-      Poster_Link
+    getMoviesByGenre (genre: "${genre}", currentPage: ${page}) {
+      data {
+        _id
+        Series_Title
+        Poster_Link
+      }
+      pageInfo {
+        currentPage
+        totalPages
+        pageSize
+      }
     }
   }`;
 
@@ -64,10 +85,17 @@ async function getMoviesByGenre(genre: string, page: number) {
 // TODO: get all??
 // async function getMoviesByTitle(title: string, page: number) {
 //   const searchQuery = `{
-//     getMoviesByTitle (title: "${title}") {
-//       _id
-//       Series_Title
-//       Poster_Link
+//     getMoviesByTitle (title: "${title}" currentPage: ${page}) {
+//       data {
+//         _id
+//         Series_Title
+//         Poster_Link
+//       }
+//       pageInfo {
+//         currentPage
+//         totalPages
+//         pageSize
+//       }
 //     }
 //   }`;
 
