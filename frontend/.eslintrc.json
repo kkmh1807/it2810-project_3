@@ -28,7 +28,8 @@
     }
   },
   "rules": {
-    "react-hooks/exhaustive-deps": "off",
+    "no-unused-vars": "off",
+
     "no-trailing-spaces": "error",
     "eqeqeq": ["error", "smart"],
     "no-console": "warn",
@@ -37,9 +38,14 @@
     "no-negated-condition": "error",
     "prefer-spread": "error",
     "rest-spread-spacing": ["error", "never"],
-    "react/react-in-jsx-scope": "off",
 
-    "no-unused-vars": "off",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps":  [
+      "warn", {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ],
+
 
     "prettier/prettier": "error"
   }

@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import { schema, resolver } from './graphql';
 
@@ -8,6 +9,9 @@ const PORT = 4000;
 
 /* We tie it all together with express, so a user can access the endpoint */
 const app = express();
+
+app.use(cors({ origin: '*' }));
+
 app.use(
   '/api',
   graphqlHTTP({
