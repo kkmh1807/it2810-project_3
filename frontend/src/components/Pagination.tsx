@@ -1,22 +1,32 @@
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { currentPage } from '../recoil/atoms';
-import { getAllMovies } from '../recoil/selectors';
-import { Movie } from '../types';
 import ChevronLeft from '../assets/chevron_left.svg';
+import ChevronRight from '../assets/chevron_right.svg';
+import DoubleArrowLeft from '../assets/double_arrow_left.svg';
+import DoubleArrowRight from '../assets/double_arrow_right.svg';
+import '../styles/Pagination.css';
 
 const Pagination = (props: { totalPages: number }) => {
   const [currentpage, setCurrentpage] = useRecoilState(currentPage);
 
   return (
-    <div>
-      <button onClick={() => setCurrentpage(currentpage - 1)}>
-        <img src={ChevronLeft}}></img>
+    <div className="pagination-container">
+      <button disabled={currentpage === 1} className="pagination-button" onClick={() => setCurrentpage(1)}>
+        <img src={DoubleArrowLeft}></img>
       </button>
-      <button>
-        {currentpage}/{props.totalPages}
+      <button disabled={currentpage === 1} className="pagination-button" onClick={() => setCurrentpage(currentpage - 1)}>
+        <img src={ChevronLeft}></img>
       </button>
-      <button onClick={() => setCurrentpage(currentpage + 1)}>+</button>
+      <div className="pagination-text">
+        {currentpage} of {props.totalPages}
+      </div>
+      <button disabled={currentpage === props.totalPages} className="pagination-button" onClick={() => setCurrentpage(currentpage + 1)}>
+        <img src={ChevronRight}></img>
+      </button>
+      <button disabled={currentpage === props.totalPages} className="pagination-button" onClick={() => setCurrentpage(props.totalPages)}>
+        <img src={DoubleArrowRight}></img>
+      </button>
     </div>
   );
 };
