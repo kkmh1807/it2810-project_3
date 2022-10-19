@@ -24,43 +24,68 @@ async function getMovies(args: PaginationParams) {
 
 // Get movies by title
 async function searchMoviesTitle(args: { title: string } & PaginationParams) {
-  const count = await movieModel.countDocuments();
+  const titleFilter = { Series_Title: { $regex: new RegExp(args.title, 'i') } };
+  const count = await movieModel.countDocuments(titleFilter);
 
   const movies = await movieModel
-    .find({ Series_Title: { $regex: new RegExp(args.title, 'i') } })
+    .find(titleFilter)
     .limit(args.pageSize)
     .skip((args.currentPage - 1) * args.pageSize);
 
-  return movies;
+  return {
+    data: movies,
+    pageInfo: {
+      pageSize: args.pageSize,
+      currentPage: args.currentPage,
+      totalPages: Math.ceil(count / args.pageSize)
+    }
+  };
 }
 
 // Get movies by actors
 async function searchMoviesByActors(args: { actor: string } & PaginationParams) {
-  const count = await movieModel.countDocuments();
+  const actorFilter = {
+    $or: [
+      { Star1: { $regex: new RegExp(args.actor, 'i') } },
+      { Star2: { $regex: new RegExp(args.actor, 'i') } },
+      { Star3: { $regex: new RegExp(args.actor, 'i') } },
+      { Star4: { $regex: new RegExp(args.actor, 'i') } }
+    ]
+  };
+  const count = await movieModel.countDocuments(actorFilter);
 
   const movies = await movieModel
-    .find({
-      $or: [
-        { Star1: { $regex: new RegExp(args.actor, 'i') } },
-        { Star2: { $regex: new RegExp(args.actor, 'i') } },
-        { Star3: { $regex: new RegExp(args.actor, 'i') } },
-        { Star4: { $regex: new RegExp(args.actor, 'i') } }
-      ]
-    })
+    .find(actorFilter)
     .limit(args.pageSize)
     .skip((args.currentPage - 1) * args.pageSize);
-  return movies;
+
+  return {
+    data: movies,
+    pageInfo: {
+      pageSize: args.pageSize,
+      currentPage: args.currentPage,
+      totalPages: Math.ceil(count / args.pageSize)
+    }
+  };
 }
 
 // Get movies by genre
 async function searchMoviesByGenres(args: { genre: string } & PaginationParams) {
-  const count = await movieModel.countDocuments();
+  const genreFilter = { Genre: args.genre };
+  const count = await movieModel.countDocuments(genreFilter);
 
   const movies = await movieModel
-    .find({ Genre: args.genre })
+    .find(genreFilter)
     .limit(args.pageSize)
     .skip((args.currentPage - 1) * args.currentPage);
-  return movies;
+  return {
+    data: movies,
+    pageInfo: {
+      pageSize: args.pageSize,
+      currentPage: args.currentPage,
+      totalPages: Math.ceil(count / args.pageSize)
+    }
+  };
 }
 /* A resolver is used to say what will be RETURNED for each schema element */
 const resolver = {
