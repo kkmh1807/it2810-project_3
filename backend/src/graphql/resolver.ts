@@ -77,7 +77,7 @@ async function searchMoviesByGenres(args: { genre: string } & PaginationParams) 
   const movies = await movieModel
     .find(genreFilter)
     .limit(args.pageSize)
-    .skip((args.currentPage - 1) * args.currentPage);
+    .skip((args.currentPage - 1) * args.pageSize);
   return {
     data: movies,
     pageInfo: {
