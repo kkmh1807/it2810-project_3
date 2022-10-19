@@ -92,8 +92,7 @@ async function searchMoviesByGenres(args: { genre: string } & PaginationParams) 
 async function setWatched(args: { id: string }) {
   const filter = { _id: args.id };
   const update = { Watched: true };
-  let movie = await movieModel.findOneAndUpdate(filter, update);
-  movie = await movieModel.findOne(filter);
+  const movie = await movieModel.findOneAndUpdate(filter, update);
 
   return await movie?.save();
 }
