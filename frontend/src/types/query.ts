@@ -9,7 +9,7 @@ export const SearchModeValues: Record<SearchMode, string> = {
   ALL: 'All',
   TITLE: 'Title',
   GENRE: 'Genres',
-  ACTOR: 'Actior'
+  ACTOR: 'Actor'
 };
 
 export interface Query {
