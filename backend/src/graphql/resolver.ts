@@ -2,12 +2,12 @@ import movieModel from '../models/movie';
 
 //Disse skal endres av frontend, dette gir pagination.
 //Limit er antall filmer som vises pr. side, og skip er antall filmer som hoppes over.
-//Hvor hver nye side man blar til, vil vi ha skip += 10 elns
+//Hvor hver nye side man blar til, vil vi ha skip += 10
 let limit: number = 10;
 let skip: number = 0;
 
-async function getMovies(args: { limitt: number; skipp: number }) {
-  const movies = await movieModel.find().limit(args.limitt).skip(args.skipp);
+async function getMovies() {
+  const movies = await movieModel.find().limit(limit).skip(skip);
   return movies;
 }
 
