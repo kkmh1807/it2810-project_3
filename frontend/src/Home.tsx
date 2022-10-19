@@ -5,18 +5,8 @@ import { getAllMovies } from './recoil/selectors';
 import './styles/HomeLogo.css';
 import { Movie } from './types';
 
-interface PageInfo {
-  currentPage: number;
-  totalPages: number;
-  pageSize: number;
-}
-interface MovieResponse {
-  data: Movie[];
-  pageInfo: PageInfo;
-}
-
 const Home = () => {
-  const movies: MovieResponse = useRecoilValue(getAllMovies);
+  const movies = useRecoilValue(getAllMovies);
 
   return (
     <>

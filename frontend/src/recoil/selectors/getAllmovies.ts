@@ -1,17 +1,8 @@
 import { selector } from 'recoil';
 import { getRequest } from '../../api/fetchData';
-import { Movie } from '../../types';
+import { MovieResponse } from '../../types';
 import { currentPage } from '../atoms';
 
-interface PageInfo {
-  currentPage: number;
-  totalPages: number;
-  pageSize: number;
-}
-interface MovieResponse {
-  data: Movie[];
-  pageInfo: PageInfo;
-}
 // TODO: probably not needed. remove?
 export const getAllMovies = selector({
   key: 'all-movies',
