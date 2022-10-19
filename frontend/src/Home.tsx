@@ -1,7 +1,9 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
+import Pagination from './components/Pagination';
 import { getAllMovies } from './recoil/selectors';
 import './styles/HomeLogo.css';
+import { Movie } from './types';
 
 const Home = () => {
   const movies = useRecoilValue(getAllMovies);
@@ -13,12 +15,13 @@ const Home = () => {
         <h1>MovieFinder</h1>
         <h2>Find your movie!</h2>
       </div>
-      {movies.map((movie) => (
+      {movies.data.map((movie: Movie) => (
         <div key={movie._id}>
           <div>{movie.Series_Title}</div>
           <img src={movie.Poster_Link} onError={(e) => (e.currentTarget.src = 'assets/imdb_logo.svg')} />
         </div>
       ))}
+      <Pagination totalPages={movies.pageInfo.totalPages} />
     </>
   );
 };

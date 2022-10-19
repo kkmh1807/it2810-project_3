@@ -1,5 +1,11 @@
 import { buildSchema } from 'graphql';
 
+// Default values in backend, should be changed by frontend.
+// Pagesize - num of results per page
+// For each new page, skip current page -1 * pageSize.
+const pageSize = 10;
+const currentPage = 1;
+
 /* A schema is used to define how the data will look */
 const schema = buildSchema(`
   type Movie {
@@ -23,14 +29,25 @@ const schema = buildSchema(`
   }
 
   type Query {
-    movies(limit:Int, skip:Int): [Movie!]
-    getMoviesByTitle(title: String, limit:Int, skip:Int): [Movie]
-    getMoviesByActors(actor: String, limit:Int, skip:Int): [Movie]
-    getMoviesByGenre(genre: String, limit:Int, skip:Int): [Movie]
+    movies(pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
+    getMoviesByTitle(title: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
+    getMoviesByActors(actor: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
+    getMoviesByGenre(genre: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
   }
 
   schema {
     query: Query
+  }
+
+  type PageInfo {
+    pageSize: Int!
+    currentPage: Int!
+    totalPages: Int!
+  }
+
+  type MovieResponse {
+    data: [Movie]!
+    pageInfo: PageInfo!
   }
 `);
 
