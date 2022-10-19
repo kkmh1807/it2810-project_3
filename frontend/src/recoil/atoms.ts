@@ -5,7 +5,7 @@ export const queryState = atom<Query>({
   key: 'search-text',
   default: {
     mode: SearchMode.ALL,
-    text: ''
+    value: ''
   }
 });
 

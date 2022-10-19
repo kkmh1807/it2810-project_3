@@ -14,5 +14,5 @@ export const SearchModeValues: Record<SearchMode, string> = {
 
 export interface Query {
   mode: SearchMode;
-  text: string;
+  value: string;
 }
