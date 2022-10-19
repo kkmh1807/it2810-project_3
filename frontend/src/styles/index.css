@@ -7,17 +7,20 @@
   --color-primary: #0c5d79;
   --color-yellow: #deb522;
   --color-black: #0c0b00;
+  --color-white: #ffffff;
   --color-snow: #fcf7f7;
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0c5d79;
   font-size: 1rem;
-  color: white;
+  color: var(--color-white);
 }
 
 code {
