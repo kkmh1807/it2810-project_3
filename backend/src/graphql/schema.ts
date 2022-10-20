@@ -53,7 +53,7 @@ const schema = buildSchema(`
   }
 
   type Mutation {
-    setWatched(id: String ): Movie
+    toggleWatched(id: String ): Movie
   }
 `);
 
