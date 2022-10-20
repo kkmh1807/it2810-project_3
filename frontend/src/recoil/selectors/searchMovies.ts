@@ -26,9 +26,16 @@ async function getMoviesByTitle(title: string, page: number) {
   const searchQuery = `{
     getMoviesByTitle (title: "${title}", currentPage: ${page}) {
       data {
-        _id
-        Series_Title
-        Poster_Link
+        _id,
+        Series_Title,
+        Poster_Link,
+        Genre,
+        Star1,
+        Star2,
+        Star3,
+        Star4,
+        IMDB_Rating, 
+        Overview,
       }
       pageInfo {
         currentPage
@@ -46,9 +53,17 @@ async function getMoviesByActor(actor: string, page: number) {
   const searchQuery = `{
     getMoviesByActors (actor: "${actor}", currentPage: ${page}) {
       data {
-        _id
-        Series_Title
-        Poster_Link
+        _id,
+        Series_Title,
+        Poster_Link,
+        Genre,
+        Star1,
+        Star2,
+        Star3,
+        Star4,
+        IMDB_Rating, 
+        Overview,
+        
       }
       pageInfo {
         currentPage
@@ -66,9 +81,16 @@ async function getMoviesByGenre(genre: string, page: number) {
   const searchQuery = `{
     getMoviesByGenre (genre: "${genre}", currentPage: ${page}) {
       data {
-        _id
-        Series_Title
-        Poster_Link
+        _id,
+        Series_Title,
+        Poster_Link,
+        Genre,
+        Star1,
+        Star2,
+        Star3,
+        Star4,
+        IMDB_Rating, 
+        Overview,
       }
       pageInfo {
         currentPage

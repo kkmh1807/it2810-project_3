@@ -5,7 +5,11 @@
   align-items: center;
 }
 
-.home-content {
-  width: 90%;
+.movie-card-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
+  color: #000000;
 }
