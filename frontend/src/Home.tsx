@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
+import MovieCard from './components/MovieCard';
 import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
 import { searchMovies } from './recoil/selectors';
@@ -22,12 +23,8 @@ const Home = () => {
       </header>
       <main className="home-content">
         {movies?.data.map((movie) => (
-          <div className="movie-card" key={movie._id}>
-            <img id="poster" src={movie.Poster_Link} onError={(e) => (e.currentTarget.src = 'assets/imdb_logo.svg')} />
-            <div id="title">{movie.Series_Title}</div>
-            <div id="genre">{movie.Genre}</div>
-            <div id="star">{movie.Star1}</div>
-            <div id="rating">{movie.IMDB_Rating}</div>
+          <div className="movie-card-container" key={movie._id}>
+            <MovieCard movie={movie} />
           </div>
         ))}
       </main>
