@@ -90,6 +90,7 @@ async function searchMoviesByGenres(args: { genre: string } & PaginationParams) 
 
 // Set status of a movie to watched
 async function toggleWatched(args: { id: string }) {
+  // https://stackoverflow.com/questions/67361357/how-do-i-update-a-boolean-field-to-its-opposite-in-mongoose
   return await movieModel.findByIdAndUpdate(args.id, [{ $set: { Watched: { $eq: [false, '$Watched'] } } }]);
 }
 /* A resolver is used to say what will be RETURNED for each schema element */
