@@ -17,6 +17,7 @@ export interface Movie {
   Star4: string;
   No_of_Votes: number;
   Gross: number;
+  Watched: boolean;
 }
 
 export const movieSchema = new Schema<Movie>({
@@ -77,7 +78,8 @@ export const movieSchema = new Schema<Movie>({
   Gross: {
     type: Number,
     required: true
-  }
+  },
+  Watched: Boolean
 });
 
 export default model<Movie>('Movie', movieSchema);
