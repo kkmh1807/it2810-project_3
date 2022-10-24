@@ -1,29 +1,65 @@
 .movie-card {
   background-color: #fcf7f7;
-  flex-basis: 90%;
+  width: 90vw;
   display: grid;
   grid-template-areas:
-    'a b b b'
-    'a c d e';
-  margin-bottom: 2%;
+    'poster title title title drpdwn'
+    'poster genre star rating drpdwn';
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 0.3fr 1.5fr 1.5fr 0.5fr;
+  grid-template-columns: 0.3fr 1.5fr 1.5fr 0.5fr 0.2fr;
   align-items: center;
+  margin-bottom: 2%;
 }
 #poster {
-  grid-area: a;
+  grid-area: poster;
   width: 70px;
   height: 102px;
 }
 #title {
-  grid-area: b;
+  grid-area: title;
+  font-size: 1.2rem;
 }
 #genre {
-  grid-area: c;
+  grid-area: genre;
 }
 #star {
-  grid-area: d;
+  grid-area: star;
 }
 #rating {
-  grid-area: e;
+  grid-area: rating;
+}
+#drpdwn {
+  grid-area: drpdwn;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #8b8b8b;
+  cursor: pointer;
+}
+
+.drpdwn-card {
+  display: flex;
+  width: 90vw;
+  margin-bottom: 2%;
+  margin-top: -2%;
+  padding: 1%;
+  background-color: #fcf7f7;
+  align-items: center;
+  border-top: 1px solid #8b8b8b;
+}
+
+#stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#stars > p {
+  width: 100%;
+  text-align: right;
+}
+#stars > h3 {
+  width: 100%;
+  text-align: right;
 }
