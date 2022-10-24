@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { queryState } from '../recoil/atoms';
+import { queryState, currentPage } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
 import '../styles/SearchBar.css';
 import { getGenres } from '../recoil/selectors/getGenres';
@@ -10,15 +10,22 @@ const SearchBar = () => {
   const [query, setQuery] = useRecoilState(queryState);
   const [queryMode, setQueryMode] = useState(query.mode);
   const [queryValue, setQueryValue] = useState(query.value);
+  const [currentpage, setCurrentpage] = useRecoilState(currentPage);
+
+  const changeQuery = () => {
+    setQuery({ mode: queryMode, value: queryValue });
+    setCurrentpage(1);
+  };
 
   const genres = useRecoilValue(getGenres);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key !== 'Enter') return;
-
+      if (e.key !== 'Enter') {
+        return;
+      }
       buttonRef.current?.focus();
-      setQuery({ mode: queryMode, value: queryValue });
+      changeQuery();
     };
 
     window.addEventListener('keydown', handler);
@@ -51,7 +58,7 @@ const SearchBar = () => {
       ) : (
         <input className="search-field" placeholder="Search..." value={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
       )}
-      <button ref={buttonRef} className="search-button" onClick={() => setQuery({ mode: queryMode, value: queryValue })}>
+      <button ref={buttonRef} className="search-button" onClick={() => changeQuery()}>
         <img src="assets/search-icon.svg" alt="Search" />
       </button>
     </section>
