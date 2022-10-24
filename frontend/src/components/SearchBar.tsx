@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
+// TODO: get options from database
+const genres = ['Horror', 'Comedy'];
+
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { queryState, currentPage } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
 import '../styles/SearchBar.css';
+import { getGenres } from '../recoil/selectors/getGenres';
 import React from 'react';
 
-// TODO: get options from database
-const genres = ['Horror', 'Comedy'];
 
 const SearchBar = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -19,6 +21,8 @@ const SearchBar = () => {
     setQueryMode(e as SearchMode);
     setCurrentpage(1);
   };
+
+  const genres = useRecoilValue(getGenres);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {

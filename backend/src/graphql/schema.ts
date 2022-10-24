@@ -26,6 +26,7 @@ const schema = buildSchema(`
     No_of_Votes: Int!
     Gross: Int!
     _id: ID!
+    Watched: Boolean
   }
 
   type Query {
@@ -33,10 +34,13 @@ const schema = buildSchema(`
     getMoviesByTitle(title: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
     getMoviesByActors(actor: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
     getMoviesByGenre(genre: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
+
+    genres: [String]!
   }
 
   schema {
     query: Query
+    mutation: Mutation
   }
 
   type PageInfo {
@@ -48,6 +52,10 @@ const schema = buildSchema(`
   type MovieResponse {
     data: [Movie]!
     pageInfo: PageInfo!
+  }
+
+  type Mutation {
+    toggleWatched(id: String ): Movie
   }
 `);
 
