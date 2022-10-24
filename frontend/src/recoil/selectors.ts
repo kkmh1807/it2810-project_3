@@ -1,6 +1,7 @@
 import { selector } from 'recoil';
 import getAllMovies from '../api/getAllMovies';
 import getGenres from '../api/getGenres';
+import getMoviesByAll from '../api/getMoviesByAll';
 import getMoviesByActor from '../api/getMoviesByActor';
 import getMoviesByGenre from '../api/getMoviesByGenre';
 import getMoviesByTitle from '../api/getMoviesByTitle';
@@ -22,8 +23,7 @@ export const genresSelector = selector({
 });
 
 const queryFunctionMap = {
-  // TODO: change to all
-  ALL: getMoviesByTitle,
+  ALL: getMoviesByAll,
   TITLE: getMoviesByTitle,
   ACTOR: getMoviesByActor,
   GENRE: getMoviesByGenre
