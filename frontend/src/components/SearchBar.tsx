@@ -12,8 +12,8 @@ const SearchBar = () => {
   const [queryValue, setQueryValue] = useState(query.value);
   const [currentpage, setCurrentpage] = useRecoilState(currentPage);
 
-  const changeQuery = (e: string) => {
-    setQueryMode(e as SearchMode);
+  const changeQuery = () => {
+    setQuery({ mode: queryMode, value: queryValue });
     setCurrentpage(1);
   };
 
@@ -22,11 +22,10 @@ const SearchBar = () => {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key !== 'Enter') {
-        setCurrentpage(1);
         return;
       }
       buttonRef.current?.focus();
-      setQuery({ mode: queryMode, value: queryValue });
+      changeQuery();
     };
 
     window.addEventListener('keydown', handler);
@@ -38,7 +37,7 @@ const SearchBar = () => {
 
   return (
     <section role="search" className="search-bar">
-      <select className="search-mode-dropdown" defaultValue={queryMode} onChange={(e) => changeQuery(e.target.value)}>
+      <select className="search-mode-dropdown" defaultValue={queryMode} onChange={(e) => setQueryMode(e.target.value as SearchMode)}>
         {Object.values(SearchMode).map((mode) => (
           <option key={mode} value={mode}>
             {SearchModeValues[mode]}
@@ -59,7 +58,7 @@ const SearchBar = () => {
       ) : (
         <input className="search-field" placeholder="Search..." value={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
       )}
-      <button ref={buttonRef} className="search-button" onClick={() => setQuery({ mode: queryMode, value: queryValue })}>
+      <button ref={buttonRef} className="search-button" onClick={() => changeQuery()}>
         <img src="assets/search-icon.svg" alt="Search" />
       </button>
     </section>
