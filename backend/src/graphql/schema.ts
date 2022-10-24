@@ -33,6 +33,8 @@ const schema = buildSchema(`
     getMoviesByTitle(title: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
     getMoviesByActors(actor: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
     getMoviesByGenre(genre: String, pageSize:Int = ${pageSize}, currentPage:Int = ${currentPage}): MovieResponse!
+
+    genres: [String]!
   }
 
   schema {
