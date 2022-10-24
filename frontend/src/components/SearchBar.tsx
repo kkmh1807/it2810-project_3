@@ -1,14 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-// TODO: get options from database
-const genres = ['Horror', 'Comedy'];
-
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { queryState, currentPage } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
 import '../styles/SearchBar.css';
 import { getGenres } from '../recoil/selectors/getGenres';
-import React from 'react';
-
 
 const SearchBar = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
