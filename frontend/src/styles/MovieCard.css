@@ -9,6 +9,7 @@
   grid-template-columns: 0.3fr 1.5fr 1.5fr 0.5fr 0.2fr;
   align-items: center;
   margin-bottom: 2%;
+  cursor: pointer;
 }
 #poster {
   grid-area: poster;
@@ -35,7 +36,7 @@
   align-items: center;
   justify-content: center;
   border-left: 1px solid #8b8b8b;
-  cursor: pointer;
+  width: 85px;
 }
 
 .drpdwn-card {
@@ -57,9 +58,9 @@
 }
 #stars > p {
   width: 100%;
-  text-align: right;
+  text-align: center;
 }
 #stars > h3 {
   width: 100%;
-  text-align: right;
+  text-align: center;
 }
