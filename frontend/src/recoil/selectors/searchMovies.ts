@@ -36,6 +36,7 @@ async function getMoviesByTitle(title: string, page: number) {
         Star4,
         IMDB_Rating, 
         Overview,
+        Watched,
       }
       pageInfo {
         currentPage
@@ -63,7 +64,7 @@ async function getMoviesByActor(actor: string, page: number) {
         Star4,
         IMDB_Rating, 
         Overview,
-        
+        Watched,        
       }
       pageInfo {
         currentPage
@@ -91,6 +92,7 @@ async function getMoviesByGenre(genre: string, page: number) {
         Star4,
         IMDB_Rating, 
         Overview,
+        Watched,
       }
       pageInfo {
         currentPage

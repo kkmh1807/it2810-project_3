@@ -16,4 +16,5 @@ export interface Movie {
   Star4: string;
   No_of_Votes: number;
   Gross: number;
+  Watched: boolean;
 }
