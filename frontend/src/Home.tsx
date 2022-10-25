@@ -3,13 +3,13 @@ import { useRecoilValue } from 'recoil';
 import MovieCard from './components/MovieCard';
 import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
-import { searchMovies } from './recoil/selectors';
+import { searchMoviesSelector } from './recoil/selectors';
 import './styles/Home.css';
 // TODO: Logo and logo-styling to own component?
 import './styles/HomeLogo.css';
 
 const Home = () => {
-  const movies = useRecoilValue(searchMovies);
+  const movies = useRecoilValue(searchMoviesSelector);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { currentPage } from '../recoil/atoms';
+import { currentPageState } from '../recoil/atoms';
 import ChevronLeft from '../assets/chevron_left.svg';
 import ChevronRight from '../assets/chevron_right.svg';
 import DoubleArrowLeft from '../assets/double_arrow_left.svg';
@@ -8,7 +8,7 @@ import DoubleArrowRight from '../assets/double_arrow_right.svg';
 import '../styles/Pagination.css';
 
 const Pagination = (props: { totalPages: number }) => {
-  const [currentpage, setCurrentpage] = useRecoilState(currentPage);
+  const [currentpage, setCurrentpage] = useRecoilState(currentPageState);
 
   return (
     <div className="pagination-container">

@@ -9,7 +9,7 @@ export const queryState = atom<Query>({
   }
 });
 
-export const currentPage = atom({
+export const currentPageState = atom({
   key: 'pagination',
   default: 1
 });

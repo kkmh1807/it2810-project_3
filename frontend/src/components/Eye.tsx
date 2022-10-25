@@ -2,14 +2,14 @@ import React from 'react';
 import { useRecoilRefresher_UNSTABLE } from 'recoil';
 import EyeIcon from '../assets/eye.svg';
 import EyeWatched from '../assets/eye_watched.svg';
-import { searchMovies } from '../recoil/selectors';
-import { postMovieChanges } from '../recoil/selectors/setWatched';
+import { searchMoviesSelector } from '../recoil/selectors';
+import toggleWatched from '../api/toggleWatched';
 
 const Eye = (props: { watched: boolean; movie_Id: string }) => {
-  const refresh = useRecoilRefresher_UNSTABLE(searchMovies);
+  const refresh = useRecoilRefresher_UNSTABLE(searchMoviesSelector);
 
   const handleClick = async () => {
-    await postMovieChanges(props.movie_Id);
+    await toggleWatched(props.movie_Id);
     refresh();
   };
 
