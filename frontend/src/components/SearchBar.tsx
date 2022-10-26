@@ -1,23 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { queryState, currentPage } from '../recoil/atoms';
+import { queryState, currentPageState } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
+import { genresSelector } from '../recoil/selectors';
 import '../styles/SearchBar.css';
-import { getGenres } from '../recoil/selectors/getGenres';
 
 const SearchBar = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useRecoilState(queryState);
   const [queryMode, setQueryMode] = useState(query.mode);
   const [queryValue, setQueryValue] = useState(query.value);
-  const [currentpage, setCurrentpage] = useRecoilState(currentPage);
+  const [, setCurrentpage] = useRecoilState(currentPageState);
 
   const changeQuery = () => {
     setQuery({ mode: queryMode, value: queryValue });
     setCurrentpage(1);
   };
 
-  const genres = useRecoilValue(getGenres);
+  const genres = useRecoilValue(genresSelector);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
