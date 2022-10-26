@@ -35,7 +35,7 @@ const MovieCard = (props: { movie: Movie }) => {
             <p>{props.movie.Star3}</p>
             <p>{props.movie.Star4}</p>
           </div>
-          <Eye watched={props.movie.Watched} movie_Id={props.movie._id} />
+          <Eye watched={props.movie.Watched} movieId={props.movie._id} />
         </div>
       ) : (
         <div></div>

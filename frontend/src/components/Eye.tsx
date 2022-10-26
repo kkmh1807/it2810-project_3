@@ -5,11 +5,11 @@ import EyeWatched from '../assets/eye_watched.svg';
 import { searchMoviesSelector } from '../recoil/selectors';
 import toggleWatched from '../api/toggleWatched';
 
-const Eye = (props: { watched: boolean; movie_Id: string }) => {
+const Eye = (props: { watched: boolean; movieId: string }) => {
   const refresh = useRecoilRefresher_UNSTABLE(searchMoviesSelector);
 
   const handleClick = async () => {
-    await toggleWatched(props.movie_Id);
+    await toggleWatched(props.movieId, !props.watched);
     refresh();
   };
 
