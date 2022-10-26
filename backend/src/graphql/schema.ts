@@ -57,7 +57,7 @@ const schema = buildSchema(`
   }
 
   type Mutation {
-    toggleWatched(id: String ): Movie
+    toggleWatched(id: String, watched: Boolean): Movie
   }
 `);
 

@@ -79,7 +79,10 @@ export const movieSchema = new Schema<Movie>({
     type: Number,
     required: true
   },
-  Watched: Boolean
+  Watched: {
+    type: Boolean,
+    default: false
+  }
 });
 
 export default model<Movie>('Movie', movieSchema);
