@@ -3,7 +3,7 @@ import getGraphqlData from './getGraphqlData';
 
 export default async function getMoviesByAll(query: string, page: number) {
   const searchQuery = `query {
-    getMoviesByAll (query: "${query}" currentPage: ${page}) {
+    getMoviesByAll (query: "${query}", currentPage: ${page}) {
       data {
         _id,
         Series_Title,

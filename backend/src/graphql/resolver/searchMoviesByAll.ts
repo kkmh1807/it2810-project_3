@@ -1,8 +1,9 @@
 import PaginationParams from '../../models/paginationParams';
 import movieModel from '../../models/movie';
+import { calcPageInfo } from '../../utils';
 
 // Get movies by any field
-export async function getMoviesByAll(args: { query: string } & PaginationParams) {
+export async function searchMoviesByAll(args: { query: string } & PaginationParams) {
   const queryRegex = new RegExp(args.query, 'i');
 
   const filter = {
@@ -16,18 +17,15 @@ export async function getMoviesByAll(args: { query: string } & PaginationParams)
     ]
   };
 
-  const count = await movieModel.countDocuments(filter);
   const movies = await movieModel
     .find(filter)
     .limit(args.pageSize)
     .skip((args.currentPage - 1) * args.pageSize);
+  const count = await movieModel.countDocuments(filter);
+  const pageInfo = calcPageInfo(args.pageSize, args.currentPage, count);
 
   return {
     data: movies,
-    pageInfo: {
-      pageSize: args.pageSize,
-      currentPage: args.currentPage,
-      totalPages: Math.ceil(count / args.pageSize)
-    }
+    pageInfo
   };
 }
