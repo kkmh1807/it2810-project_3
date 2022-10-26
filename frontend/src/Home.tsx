@@ -28,7 +28,7 @@ const Home = () => {
           </div>
         ))}
       </main>
-      <Pagination totalPages={movies?.pageInfo.totalPages || 0} />
+      {movies?.data.length ? <Pagination totalPages={movies?.pageInfo.totalPages || 0} /> : <div></div>}
     </>
   );
 };
