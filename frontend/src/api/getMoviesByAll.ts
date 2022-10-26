@@ -24,6 +24,6 @@ export default async function getMoviesByAll(query: string, page: number) {
     }
   }`;
 
-  const response = await getGraphqlData<{ getMoviesByAll: MovieResponse }>(`http://localhost:4000/api?query=${searchQuery}`);
+  const response = await getGraphqlData<{ getMoviesByAll: MovieResponse }>(searchQuery);
   return response.getMoviesByAll;
 }
