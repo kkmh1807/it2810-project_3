@@ -2,14 +2,12 @@ import { GraphQLResponse } from '../types';
 
 const API_URL = 'http://localhost:4000/api';
 
-export default async function getGraphqlData<T>(query: string, variables?: Record<string, unknown>, operationName?: string) {
+export default async function getGraphqlData<T>(query: string) {
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      query,
-      variables,
-      operationName
+      query
     })
   });
 
