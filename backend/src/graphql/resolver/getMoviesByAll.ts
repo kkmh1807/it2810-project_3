@@ -9,9 +9,6 @@ export async function getMoviesByAll(args: { query: string } & PaginationParams)
     $or: [
       { Series_Title: { $regex: queryRegex } },
       { Genre: { $regex: queryRegex } },
-      { Overview: { $regex: queryRegex } },
-      { Genre: { $regex: queryRegex } },
-      { Director: { $regex: queryRegex } },
       { Star1: { $regex: queryRegex } },
       { Star2: { $regex: queryRegex } },
       { Star3: { $regex: queryRegex } },
