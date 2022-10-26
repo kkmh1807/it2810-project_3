@@ -17,9 +17,9 @@ const Eye = (props: { watched: boolean; movieId: string }) => {
     <>
       {props.watched ? (
         // Inline-styling is used because it's only on these elements.
-        <img onClick={handleClick} style={{ cursor: 'pointer' }} src={EyeWatched} alt="Eye watched filled" />
+        <img data-cy="watched-eye" onClick={handleClick} style={{ cursor: 'pointer' }} src={EyeWatched} alt="Eye watched filled" />
       ) : (
-        <img onClick={handleClick} style={{ cursor: 'pointer' }} src={EyeIcon} alt="Eye unwatched unfilled" />
+        <img data-cy="unwatched-eye" onClick={handleClick} style={{ cursor: 'pointer' }} src={EyeIcon} alt="Eye unwatched unfilled" />
       )}
     </>
   );

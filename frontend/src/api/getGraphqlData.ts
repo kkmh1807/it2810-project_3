@@ -1,5 +1,6 @@
 import { GraphQLResponse } from '../types';
 
+// TODO: change when vm is up
 const API_URL = 'http://localhost:4000/api';
 
 export default async function getGraphqlData<T>(query: string) {
