@@ -47,7 +47,12 @@
   padding: 1%;
   background-color: #fcf7f7;
   align-items: center;
+  justify-content: space-between;
   border-top: 1px solid #8b8b8b;
+}
+
+#info {
+  width: 70%;
 }
 
 #stars {
