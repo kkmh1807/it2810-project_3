@@ -1,21 +1,20 @@
-import React from 'react';
-import { useRecoilRefresher_UNSTABLE } from 'recoil';
+import React, { useState } from 'react';
 import EyeIcon from '../assets/eye.svg';
 import EyeWatched from '../assets/eye_watched.svg';
-import { searchMoviesSelector } from '../recoil/selectors';
 import toggleWatched from '../api/toggleWatched';
 
 const Eye = (props: { watched: boolean; movieId: string }) => {
-  const refresh = useRecoilRefresher_UNSTABLE(searchMoviesSelector);
+  const [eyeState, setEyeState] = useState(props.watched);
 
   const handleClick = async () => {
-    await toggleWatched(props.movieId, !props.watched);
-    refresh();
+    await toggleWatched(props.movieId, !eyeState);
+
+    setEyeState(!eyeState);
   };
 
   return (
     <>
-      {props.watched ? (
+      {eyeState ? (
         // Inline-styling is used because it's only on these elements.
         <img onClick={handleClick} style={{ cursor: 'pointer' }} src={EyeWatched} alt="Eye watched filled" />
       ) : (

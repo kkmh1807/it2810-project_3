@@ -15,6 +15,7 @@ export default async function getMoviesByAll(query: string, page: number) {
         Star4,
         IMDB_Rating, 
         Overview,
+        Watched,
       }
       pageInfo {
         currentPage
