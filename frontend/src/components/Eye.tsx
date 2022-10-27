@@ -4,7 +4,7 @@ import EyeWatched from '../assets/eye_watched.svg';
 import toggleWatched from '../api/toggleWatched';
 
 const Eye = (props: { watched: boolean; movieId: string }) => {
-  const [eyeState, setEyeState] = useState(props.watched || false);
+  const [eyeState, setEyeState] = useState(props.watched);
 
   const handleClick = async () => {
     await toggleWatched(props.movieId, !eyeState);
