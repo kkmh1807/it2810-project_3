@@ -1,9 +1,61 @@
 .home-header {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  --logo-size: 150px;
+  --logo-margin: 1rem;
+  --title-size: 36px;
+  --slogan-height: auto;
+  --slogan-opacity: 1;
+}
+
+.home-header,
+.home-header * {
+  transition: all 150ms ease-in;
+}
+
+.home-header.with-content {
+  flex-direction: row;
+  margin-top: 1rem;
+
+  --logo-size: 100px;
+  --logo-margin: 0.5rem;
+  --title-size: 24px;
+  --slogan-height: 0;
+  --slogan-opacity: 0;
+}
+
+
+.home-logo {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.logo-img {
+  width: var(--logo-size);
+  margin-bottom: var(--logo-margin);
+}
+
+
+.logo-title {
+  font-size: var(--title-size);
+}
+
+.logo-slogan {
+  font-size: 28px;
+  height: var(--slogan-height);
+  opacity: var(--slogan-opacity);
+}
+
 
 .movie-card-container {
   width: 100%;

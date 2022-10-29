@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { startTransition, useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { queryState, currentPageState } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
@@ -13,8 +13,10 @@ const SearchBar = () => {
   const [, setCurrentpage] = useRecoilState(currentPageState);
 
   const changeQuery = () => {
-    setQuery({ mode: queryMode, value: queryValue });
-    setCurrentpage(1);
+    startTransition(() => {
+      setQuery({ mode: queryMode, value: queryValue });
+      setCurrentpage(1);
+    });
   };
 
   const genres = useRecoilValue(genresSelector);
