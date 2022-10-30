@@ -1,12 +1,12 @@
 .search-bar {
   display: flex;
-  max-width: 800px;
-  flex-grow: 1;
+  width: 100%;
 }
 
 .search-bar > * {
   border: 0;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  font-size: 20px;
 }
 
 .search-bar > *:hover {
@@ -21,7 +21,7 @@
 
 .search-genre-dropdown,
 .search-field {
-  min-width: 300px;
+  min-width: 200px;
   flex-grow: 1;
 }
 
@@ -37,6 +37,6 @@
 
 
 .search-button > img {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
