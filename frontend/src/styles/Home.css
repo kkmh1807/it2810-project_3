@@ -45,6 +45,11 @@
   margin-bottom: var(--logo-margin);
 }
 
+@media only screen and (max-width: 768px) {
+  .home-header.with-content {
+    flex-direction: column;
+  }
+}
 
 .logo-title {
   font-size: var(--title-size);

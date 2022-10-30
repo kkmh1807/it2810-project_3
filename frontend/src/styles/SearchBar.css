@@ -1,8 +1,6 @@
 .search-bar {
   display: flex;
-  max-width: 800px;
-  width: 80%;
-  flex-grow: 1;
+  width: 100%;
 }
 
 .search-bar > * {
@@ -23,7 +21,7 @@
 
 .search-genre-dropdown,
 .search-field {
-  min-width: 300px;
+  min-width: 200px;
   flex-grow: 1;
 }
 
