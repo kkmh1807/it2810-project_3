@@ -9,7 +9,7 @@ describe('End to End test', () => {
     cy.get('#drpdwn').click();
     cy.get('[data-cy="unwatched-eye"]').should('exist').click();
     // TODO: uncomment this when eye branch merged
-    // cy.get('[data-cy="watched-eye"]').should('exist').click();
+    cy.get('[data-cy="watched-eye"]').should('exist').click();
   });
 
   it('can browse different pages of movies', () => {
