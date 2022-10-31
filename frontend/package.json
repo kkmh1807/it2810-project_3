@@ -10,7 +10,8 @@
     "lint": "eslint --ext .ts,.tsx src/",
     "lint:fix": "npm run lint -- --fix",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run-e2e": "cypress run",
+    "cypress:run-component": "cypress run --component"
   },
   "browserslist": {
     "production": [
