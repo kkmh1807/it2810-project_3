@@ -8,6 +8,7 @@ import '../styles/SearchBar.css';
 
 const SearchBar = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useRecoilState(queryState);
   const [queryMode, setQueryMode] = useState(query.mode);
   const [queryValue, setQueryValue] = useState(query.value);
@@ -24,7 +25,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key !== 'Enter') {
+      if (e.target !== inputRef.current || e.key !== 'Enter') {
         return;
       }
       buttonRef.current?.focus();
@@ -59,7 +60,7 @@ const SearchBar = () => {
           ))}
         </select>
       ) : (
-        <input className="search-field" placeholder="Search..." value={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
+        <input ref={inputRef} className="search-field" placeholder="Search..." value={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
       )}
       <button ref={buttonRef} className="search-button" onClick={() => changeQuery()}>
         <img src={searchIcon} alt="Search" />
