@@ -1,18 +1,17 @@
-import { mount } from 'cypress/react18';
 import { RecoilRoot } from 'recoil';
 import { Suspense } from 'react';
 import React from 'react';
 import SearchBar from '../../src/components/SearchBar';
 
 describe('SearchBar.cy.ts', () => {
-  it('mounts', () => {
+  it('works as expected', () => {
     cy.intercept('POST', 'http://localhost:4000/api', (req) =>
       req.reply({
         data: {
           genres: ['Adventure', 'Horror', 'Comedy']
         }
       })
-    );
+    ).as('getGenres');
 
     cy.mount(
       <RecoilRoot>
@@ -22,10 +21,14 @@ describe('SearchBar.cy.ts', () => {
       </RecoilRoot>
     );
 
-    cy.get('input').should('have.attr', 'placeholder', 'Search...');
-    cy.get('select').should('have.value', 'ALL');
-    // search button / function
-    // input field
-    // select genres dropdown
+    cy.wait('@getGenres');
+
+    cy.get('input').should('have.attr', 'placeholder', 'Search...').type('Lord');
+
+    cy.get('search-genre-dropwdown').should('not.exist');
+
+    cy.get('select').should('have.value', 'ALL').select('GENRE');
+    cy.get('.search-genre-dropdown').should('exist');
+    cy.get('input').should('not.exist');
   });
 });
