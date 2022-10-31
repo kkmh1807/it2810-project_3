@@ -32,7 +32,6 @@
   --slogan-opacity: 0;
 }
 
-
 .home-logo {
   display: flex;
   flex-direction: column;
@@ -61,7 +60,6 @@
   opacity: var(--slogan-opacity);
 }
 
-
 .movie-card-container {
   width: 100%;
   display: flex;
@@ -69,4 +67,22 @@
   justify-content: center;
   margin: 0 auto;
   color: #000000;
+}
+
+.sorting-params {
+  display: flex;
+  width: 87.5vw;
+  margin: 0 auto;
+  margin-bottom: 1.2rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sorting-params > img {
+  cursor: pointer;
+  height: 24px;
+}
+.sorting-params > p {
+  width: 50px;
 }

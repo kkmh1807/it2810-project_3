@@ -13,3 +13,8 @@ export const currentPageState = atom({
   key: 'pagination',
   default: 1
 });
+
+export const order = atom({
+  key: 'sorting',
+  default: false
+});

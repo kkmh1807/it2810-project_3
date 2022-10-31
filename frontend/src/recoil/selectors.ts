@@ -5,13 +5,14 @@ import getMoviesByAll from '../api/getMoviesByAll';
 import getMoviesByActor from '../api/getMoviesByActor';
 import getMoviesByGenre from '../api/getMoviesByGenre';
 import getMoviesByTitle from '../api/getMoviesByTitle';
-import { currentPageState, queryState } from './atoms';
+import { currentPageState, queryState, order } from './atoms';
 
 export const allMoviesSelector = selector({
   key: 'all-movies',
   get: async ({ get }) => {
     const currentPage = get(currentPageState);
-    return await getAllMovies(currentPage);
+    const currentOrder = get(order);
+    return await getAllMovies(currentPage, currentOrder);
   }
 });
 
@@ -34,11 +35,12 @@ export const searchMoviesSelector = selector({
   get: async ({ get }) => {
     const query = get(queryState);
     const currentPage = get(currentPageState);
+    const currentOrder = get(order);
 
     if (!query.value) return;
 
     const queryFunction = queryFunctionMap[query.mode];
 
-    return await queryFunction(query.value, currentPage);
+    return await queryFunction(query.value, currentPage, currentOrder);
   }
 });
