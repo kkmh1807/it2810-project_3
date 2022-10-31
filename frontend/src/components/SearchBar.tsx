@@ -3,6 +3,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { queryState, currentPageState } from '../recoil/atoms';
 import { SearchMode, SearchModeValues } from '../types';
 import { genresSelector } from '../recoil/selectors';
+import searchIcon from '../assets/search-icon.svg';
 import '../styles/SearchBar.css';
 
 const SearchBar = () => {
@@ -61,7 +62,7 @@ const SearchBar = () => {
         <input className="search-field" placeholder="Search..." value={queryValue} onChange={(e) => setQueryValue(e.target.value)} />
       )}
       <button ref={buttonRef} className="search-button" onClick={() => changeQuery()}>
-        <img src="assets/search-icon.svg" alt="Search" />
+        <img src={searchIcon} alt="Search" />
       </button>
     </section>
   );
