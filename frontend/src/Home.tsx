@@ -29,6 +29,7 @@ const Home = () => {
           {totalPages ? (
             <div className="sorting-params">
               <img
+                alt="Sort direction"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && setCurrentOrder(!currentorder)}
                 data-cy="sorting-arrows"
