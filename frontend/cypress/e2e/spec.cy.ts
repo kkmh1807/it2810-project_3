@@ -1,6 +1,4 @@
-// TODO: change when vm is up
-// const API_URL = 'http://it2810-37.idi.ntnu.no';
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://it2810-37.idi.ntnu.no/project3';
 
 describe('End to End test', () => {
   it('can search for and save watched movies', () => {

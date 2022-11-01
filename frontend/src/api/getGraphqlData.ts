@@ -1,8 +1,6 @@
 import { GraphQLResponse } from '../types';
 
-// TODO: change when vm is up
-// const API_URL = 'http://it2810-37.idi.ntnu.no:4000/api';
-const API_URL = 'http://localhost:4000/api';
+const API_URL = 'http://it2810-37.idi.ntnu.no:4000/api';
 
 export default async function getGraphqlData<T>(query: string) {
   const response = await fetch(API_URL, {
