@@ -1,4 +1,5 @@
 // TODO: change when vm is up
+// const API_URL = 'http://it2810-37.idi.ntnu.no';
 const API_URL = 'http://localhost:3000';
 
 describe('End to End test', () => {

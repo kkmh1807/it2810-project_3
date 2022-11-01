@@ -5,6 +5,7 @@ import { SearchMode, SearchModeValues } from '../types';
 import { genresSelector } from '../recoil/selectors';
 import searchIcon from '../assets/search-icon.svg';
 import '../styles/SearchBar.css';
+import '../styles/Media.css';
 
 const SearchBar = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);

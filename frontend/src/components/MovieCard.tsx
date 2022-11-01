@@ -7,6 +7,7 @@ import IMDB_logo from '../assets/imdb_logo.svg';
 import { useRecoilValue } from 'recoil';
 import { queryState } from '../recoil/atoms';
 import '../styles/MovieCard.css';
+import '../styles/Media.css';
 
 const MovieCard = (props: { movie: Movie }) => {
   const [open, setopen] = useState(false);

@@ -2,10 +2,11 @@ import React, { Suspense, useState } from 'react';
 import MovieList from './components/MovieList';
 import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
-import './styles/Home.css';
 import SortingArrows from './assets/sorting_arrows.svg';
 import { useRecoilState } from 'recoil';
 import { order } from './recoil/atoms';
+import './styles/Home.css';
+import './styles/Media.css';
 
 const Home = () => {
   const [totalPages, setTotalPages] = useState(0);
@@ -27,7 +28,13 @@ const Home = () => {
         <Suspense>
           {totalPages ? (
             <div className="sorting-params">
-              <img data-cy="sorting-arrows" src={SortingArrows} onClick={() => setCurrentOrder(!currentorder)} />
+              <img
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setCurrentOrder(!currentorder)}
+                data-cy="sorting-arrows"
+                src={SortingArrows}
+                onClick={() => setCurrentOrder(!currentorder)}
+              />
               {currentorder ? <p>Stigende</p> : <p>Synkende</p>}
             </div>
           ) : (

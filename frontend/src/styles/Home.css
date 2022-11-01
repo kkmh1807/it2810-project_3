@@ -71,7 +71,7 @@
 
 .sorting-params {
   display: flex;
-  width: 87.5vw;
+  width: 90vw;
   margin: 0 auto;
   margin-bottom: 1.2rem;
   flex-direction: row;
@@ -82,7 +82,4 @@
 .sorting-params > img {
   cursor: pointer;
   height: 24px;
-}
-.sorting-params > p {
-  width: 50px;
 }

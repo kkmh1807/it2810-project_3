@@ -6,7 +6,7 @@
     'poster title title title drpdwn'
     'poster genre star rating drpdwn';
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 0.3fr 1.5fr 1.5fr 0.5fr 0.2fr;
+  grid-template-columns: auto 1.5fr 1.5fr 0.5fr 0.2fr;
   align-items: center;
   margin-bottom: 2%;
   cursor: pointer;
@@ -19,9 +19,11 @@
 #title {
   grid-area: title;
   font-size: 1.2rem;
+  margin-left: 0.5rem;
 }
 #genre {
   grid-area: genre;
+  margin-left: 0.5rem;
 }
 #star {
   grid-area: star;

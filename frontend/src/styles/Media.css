@@ -1,0 +1,78 @@
+@media only screen and (max-width: 426px) {
+  .sorting-params {
+    justify-content: center !important;
+  }
+
+  .movie-card {
+    width: 100vw;
+  }
+  .drpdwn-card {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: bottom;
+  }
+
+  .drpdwn-card > img {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+
+  #stars {
+    flex-basis: 60%;
+    text-align: left;
+  }
+
+  #stars > p {
+    text-align: left;
+  }
+
+  #stars > h3 {
+    margin-top: 5%;
+    text-align: left;
+  }
+
+  .search-bar {
+    width: 100vw;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .movie-card {
+    width: 100vw;
+  }
+
+  #star {
+    visibility: hidden;
+  }
+
+  #title {
+    margin-left: 0.5rem;
+  }
+  #genre {
+    margin-left: 0.5rem;
+  }
+
+  .drpdwn-card {
+    width: 100vw;
+  }
+  .search-bar {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .search-bar {
+    width: 100vw;
+  }
+  .search-bar > * {
+    font-size: 0.9rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .search-button > img {
+    width: 20px !important;
+  }
+}
