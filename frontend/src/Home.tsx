@@ -3,14 +3,15 @@ import MovieList from './components/MovieList';
 import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
 import SortingArrows from './assets/sorting_arrows.svg';
-import { useRecoilState } from 'recoil';
-import { order } from './recoil/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { order, queryState } from './recoil/atoms';
 import './styles/Home.css';
 import './styles/Media.css';
 
 const Home = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [currentorder, setCurrentOrder] = useRecoilState(order);
+  const query = useRecoilValue(queryState);
 
   return (
     <>
@@ -39,7 +40,7 @@ const Home = () => {
               {currentorder ? <p>Stigende</p> : <p>Synkende</p>}
             </div>
           ) : (
-            <div></div>
+            query.value && <div className="no-content">No movies found matching your search</div>
           )}
           <MovieList setTotalPages={setTotalPages} />
         </Suspense>
