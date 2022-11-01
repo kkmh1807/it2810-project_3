@@ -3,7 +3,7 @@ import movieModel from '../../models/movie';
 import { calcPageInfo } from '../../utils';
 
 // Get movies by any field
-export async function searchMoviesByAll(args: { query: string } & PaginationParams) {
+export async function searchMoviesByAll(args: { query: string; order: boolean } & PaginationParams) {
   const queryRegex = new RegExp(args.query, 'i');
 
   const filter = {
@@ -16,9 +16,14 @@ export async function searchMoviesByAll(args: { query: string } & PaginationPara
       { Star4: { $regex: queryRegex } }
     ]
   };
+  // If true, it should be ASC, If false, sort DESC.
+  const isSorted = args.order ? 1 : -1;
 
   const movies = await movieModel
     .find(filter)
+    .sort({
+      IMDB_Rating: isSorted
+    })
     .limit(args.pageSize)
     .skip((args.currentPage - 1) * args.pageSize);
   const count = await movieModel.countDocuments(filter);

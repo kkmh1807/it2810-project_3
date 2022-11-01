@@ -1,9 +1,9 @@
 import { MovieResponse } from '../types';
 import getGraphqlData from './getGraphqlData';
 
-export default async function getMoviesByAll(query: string, page: number) {
+export default async function getMoviesByAll(query: string, page: number, order: boolean) {
   const searchQuery = `query {
-    getMoviesByAll (query: "${query}", currentPage: ${page}) {
+    getMoviesByAll (query: "${query}", currentPage: ${page}, order: ${order}) {
       data {
         _id,
         Series_Title,

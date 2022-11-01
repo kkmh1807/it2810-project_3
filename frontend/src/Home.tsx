@@ -3,9 +3,13 @@ import MovieList from './components/MovieList';
 import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
 import './styles/Home.css';
+import SortingArrows from './assets/sorting_arrows.svg';
+import { useRecoilState } from 'recoil';
+import { order } from './recoil/atoms';
 
 const Home = () => {
   const [totalPages, setTotalPages] = useState(0);
+  const [currentorder, setCurrentOrder] = useRecoilState(order);
 
   return (
     <>
@@ -21,6 +25,14 @@ const Home = () => {
       </header>
       <main className="home-content">
         <Suspense>
+          {totalPages ? (
+            <div className="sorting-params">
+              <img src={SortingArrows} onClick={() => setCurrentOrder(!currentorder)} />
+              {currentorder ? <p>Stigende</p> : <p>Synkende</p>}
+            </div>
+          ) : (
+            <div></div>
+          )}
           <MovieList setTotalPages={setTotalPages} />
         </Suspense>
       </main>
