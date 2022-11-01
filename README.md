@@ -87,7 +87,7 @@ Vi stod mellom både Redux og Recoil da vi skulle velge state management i front
 
 #### API
 
-I frontend henter vi data fra backend ved å bruke javascript sitt `fetch`-API. Dette gjør vi også for å sende POST-requests til backenden. Vi valgte å gjøre det på denne måten fordi det var den enkleste metoden å kommunisere med den oppsatte databasen på. I tillegg sender vi POST-requests istedenfor GET-requests fordi det er best practice i GraphQL ifølge [denne kilden](https://graphql.org/learn/serving-over-http/)
+I frontend henter vi data fra backend ved å bruke javascript sitt `fetch`-API. Dette gjør vi også for å sende POST-requests til backenden. Vi valgte å gjøre det på denne måten fordi det var den enkleste metoden å kommunisere med den oppsatte databasen på. I tillegg sender vi POST-requests istedenfor GET-requests fordi det er best practice i GraphQL ifølge [denne kilden.](https://graphql.org/learn/serving-over-http/)
 
 ### Testing
 
@@ -101,7 +101,7 @@ Komponenttester: npm run cypress:run-component
 E2E-tester:      npm run cypress:run-e2e
 ```
 
-#### Universell utforming
+## Universell utforming
 
 For å teste universell utforming har vi testet at alle elementer er aksesserbare via tastaturet. Vi testet også nettsiden med skjermleser slik at elementene blir lest opp korrekt for de som benytter seg av det.
 
