@@ -27,7 +27,7 @@ const Home = () => {
         <Suspense>
           {totalPages ? (
             <div className="sorting-params">
-              <img src={SortingArrows} onClick={() => setCurrentOrder(!currentorder)} />
+              <img data-cy="sorting-arrows" src={SortingArrows} onClick={() => setCurrentOrder(!currentorder)} />
               {currentorder ? <p>Stigende</p> : <p>Synkende</p>}
             </div>
           ) : (

@@ -8,8 +8,6 @@ describe('End to End test', () => {
     cy.get('button').click();
     cy.get('#drpdwn').click();
     cy.get('[data-cy="unwatched-eye"]').should('exist').click();
-    // TODO: uncomment this when eye branch merged
-    // TODO: uncomment this when eye branch merged
     cy.get('[data-cy="watched-eye"]').should('exist').click();
     cy.get('[data-cy="unwatched-eye"]').should('exist');
   });
@@ -31,4 +29,14 @@ describe('End to End test', () => {
     cy.get('.search-genre-dropdown').select('Action');
     cy.get('button').click();
   });
+  it('can sort by IMDB-rating', () => {
+    cy.visit(API_URL);
+    cy.get('input').type('Green');
+    cy.get('button').click();
+    cy.get('#rating').contains('8.6');
+    cy.get('[data-cy="sorting-arrows"]').click();
+    cy.get('#rating').contains('7.6');
+  });
 });
+
+export {};
